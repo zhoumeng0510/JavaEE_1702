@@ -13,7 +13,11 @@
 <body>
 <%
     String nick = request.getParameter("nick");
-    out.print(nick);
+    out.println(nick);
+    String tel = request.getParameter("tel");
+    out.println(tel);
+    String pw = request.getParameter("pw");
+    out.println(pw);
 %>
 </body>
 </html>
