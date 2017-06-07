@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
   User: ASUS
@@ -19,10 +20,10 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<div style="text-align: center">
+<div style="text-align:center">
     <table style="margin: 0 auto;">
         <tr style="background: #777;">
-            <th>----------------</th>
+            <th>好好学习，天天向上</th>
         </tr>
         <%
             // color
