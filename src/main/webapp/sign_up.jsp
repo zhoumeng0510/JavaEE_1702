@@ -11,6 +11,15 @@
     <title>sign up page</title>
 </head>
 <body>
+<h1>注册</h1>
+<pre>
+Ctrl + Shift + F10
+Ctrl + Shift + R
+
+Shift + Alt + F10
+Ctrl + Option + R
+
+</pre>
 <form action="register.jsp">
     <input type="text" name="nick" placeholder="昵称"><br>
     <input type="text" name="tel" placeholder="手机号"><br>

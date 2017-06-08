@@ -22,6 +22,8 @@
     String pw = request.getParameter("pw");
     out.println(pw);
 
+    // TODO: 6/8/17 验证 nick mobile 的存在性
+
     new Driver();
     Connection connection = DriverManager.getConnection("jdbc:mysql:///?user=root&password=system");
     String sql = "INSERT INTO db_javaee.user VALUE (NULL ,?,?,?)";
@@ -30,6 +32,7 @@
     statement.setString(2, tel);
     statement.setString(3, pw);
     statement.executeUpdate();
+
     statement.close();
     connection.close();
 

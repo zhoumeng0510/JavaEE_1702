@@ -14,6 +14,16 @@
 <head>
     <title>Title</title>
 </head>
+<pre>
+    request:
+        getRemoteAddr()
+        getParameter()
+        getRequestDispatcher().forward()
+        setAttribute()
+        getAttribute()
+    response:
+        sendRedirect()
+</pre>
 <body>
 <%
     String tel = request.getParameter("tel");
@@ -28,14 +38,21 @@
     ResultSet resultSet = statement.executeQuery();
     if (resultSet.next()) {
         // success
-        response.sendRedirect("home.jsp");//redirect 重定向
+//        System.out.println(resultSet.getString("nick"));
+//        request.setAttribute("nick", resultSet.getString("nick"));
+        session.setAttribute("nick", resultSet.getString("nick"));
+//        response.sendRedirect("home.jsp"); // 不能保存 request 范围内的属性
+        request.getRequestDispatcher("home.jsp").forward(request, response); // 可以保存
     } else {
         // failed
 //        response.sendRedirect("index.jsp");// redirect 重定向 地址栏地址有变化
-        request.setAttribute("message","手机号或密码错误");
+        request.setAttribute("message", "手机号或密码错误");
         request.getRequestDispatcher("index.jsp").forward(request, response);// forward 转发 地址栏地址没有变化
     }
 
+    resultSet.close();
+    statement.close();
+    connection.close();
 %>
 </body>
 </html>
