@@ -11,11 +11,13 @@
     <title>index pag</title>
 </head>
 <body>
-<form action="">
-    <input type="text" placeholder="邮箱"><br>
-    <input type="password" placeholder="密码"><br>
+<h1>index pag</h1>
+<form action="login.jsp">
+    <input type="text" name="tel" placeholder="手机号"><br>
+    <input type="password" name="pw" placeholder="密码"><br>
     <input type="submit" value="登录"><br>
 </form>
-<a href="signup.jsp">注册</a>
+<p><%=request.getAttribute("message")%></p>
+<a href="sign_up.jsp">注册</a>
 </body>
 </html>
