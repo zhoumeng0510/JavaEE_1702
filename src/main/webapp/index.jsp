@@ -11,13 +11,13 @@
     <title>index pag</title>
 </head>
 <body>
-<h1>登录</h1>
-<form action="login.jsp">
-    <input type="text" name="tel" placeholder="手机号"><br>
-    <input type="password" name="pw" placeholder="密码"><br>
-    <input type="submit" value="登录"><br>
+<h1>登录<%=session.getId()%></h1>
+<form action="login.jsp" method="post">
+    <input type="text" name="mobile" placeholder="手机号"><br>
+    <input type="password" name="password" placeholder="密码"><br>
+    <input type="submit" value="登录">
 </form>
-<%--<%=(request.getAttribute("message") != null) ? request.getAttribute("message") : ""%>--%>
+<%=(request.getAttribute("message") != null) ? request.getAttribute("message") : ""%>
 <p>
     <%
         String message = (String) request.getAttribute("message");

@@ -7,9 +7,9 @@ CREATE TABLE db_javaee.user (
   COMMENT 'ID PK',
   nick     VARCHAR(255) NOT NULL UNIQUE
   COMMENT '昵称',
-  tel   VARCHAR(255) NOT NULL UNIQUE
+  mobile   VARCHAR(255) NOT NULL UNIQUE
   COMMENT '手机号',
-  pw VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL
   COMMENT '密码'
 )
   COMMENT '用户表';
