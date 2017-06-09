@@ -3,7 +3,6 @@ package demo.servlet;
 import demo.util.Db;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,13 +11,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 /**
  * Created by zhoumeng on
  * 2017.6.9.
  * 上午 11:57.
  */
-@WebServlet(urlPatterns = "/register")
+//@WebServlet(urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,8 +31,8 @@ public class RegisterServlet extends HttpServlet {
             req.getRequestDispatcher("sign_up.jsp").forward(req, resp);
         }
 
-        String[] hobbies = req.getParameterValues("hobbies");
-        String[] cities = req.getParameterValues("cities");
+//        String[] hobbies = req.getParameterValues("hobbies");
+//        String[] cities = req.getParameterValues("cities");
 
         Connection connection = Db.getConnection();
         PreparedStatement statement = null;
@@ -58,18 +56,18 @@ public class RegisterServlet extends HttpServlet {
 
             if (isNickExist) {
                 req.setAttribute("message", "昵称已经存在");
-                req.getRequestDispatcher("signup.jsp").forward(req, resp);
+                req.getRequestDispatcher("sign_up.jsp").forward(req, resp);
             } else if (isMobileExist) {
                 req.setAttribute("message", "手机号已经存在");
-                req.getRequestDispatcher("signup.jsp").forward(req, resp);
+                req.getRequestDispatcher("sign_up.jsp").forward(req, resp);
             } else {
-                String sql = "INSERT INTO db_javaee.user VALUE (NULL ,?,?,?,?,?)";
+                String sql = "INSERT INTO db_javaee.user VALUE (NULL ,?,?,?)";
                 statement = connection.prepareStatement(sql);
                 statement.setString(1, nick);
                 statement.setString(2, mobile);
                 statement.setString(3, password);
-                statement.setString(4, Arrays.toString(hobbies));
-                statement.setString(5, Arrays.toString(cities));
+//                statement.setString(4, Arrays.toString(hobbies));
+//                statement.setString(5, Arrays.toString(cities));
                 statement.executeUpdate();
                 resp.sendRedirect("index.jsp");
             }
