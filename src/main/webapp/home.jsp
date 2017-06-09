@@ -18,8 +18,7 @@
 %>
 <h1>主页<%=session.getId()%>
 </h1>
-<p><%=session.getAttribute("nick")%>
-</p>
+<p><%=session.getAttribute("nick")%></p>
 <a href="second.jsp">第二页</a>
 <%
     pageContext.setAttribute("key", "value");
@@ -27,6 +26,6 @@
 %>
 <%=pageContext.getAttribute("key")%>
 <%=application.getAttribute("app-key")%>
-<p><a href="logout.jsp">注销</a></p>
+<p><a href="logout">注销</a></p>
 </body>
 </html>
