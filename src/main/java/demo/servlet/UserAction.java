@@ -24,25 +24,6 @@ public class UserAction extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
 
-        /*
-        if (action == null) {
-            req.setAttribute("message","出现了一点问题。。。");
-            req.getRequestDispatcher("index.jsp").forward(req,resp);
-            return;
-        }
-
-        switch (action) {
-            case "register":
-                register(req,resp);
-                break;
-        case "login":
-                login(req,resp);
-                break;
-        case "logout":
-                logout(req,resp);
-        }
-        */
-
         if ("register".equals(action)) {
             register(req, resp);
             return;
@@ -72,6 +53,8 @@ public class UserAction extends HttpServlet {
             if (connection != null) {
                 statement = connection.prepareStatement(sql);
             } else {
+                req.setAttribute("message", "出现了一点情况...");
+                req.getRequestDispatcher("index.jsp").forward(req, resp);
                 return;
             }
             statement.setString(1, mobile);
@@ -108,9 +91,6 @@ public class UserAction extends HttpServlet {
             req.getRequestDispatcher("sign_up.jsp").forward(req, resp);
         }
 
-//        String[] hobbies = req.getParameterValues("hobbies");
-//        String[] cities = req.getParameterValues("cities");
-
         Connection connection = Db.getConnection();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -143,8 +123,6 @@ public class UserAction extends HttpServlet {
                 statement.setString(1, nick);
                 statement.setString(2, mobile);
                 statement.setString(3, password);
-//                statement.setString(4, Arrays.toString(hobbies));
-//                statement.setString(5, Arrays.toString(cities));
                 statement.executeUpdate();
                 resp.sendRedirect("index.jsp");
             }
@@ -154,7 +132,6 @@ public class UserAction extends HttpServlet {
             Db.close(resultSet, statement, connection);
         }
     }
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
