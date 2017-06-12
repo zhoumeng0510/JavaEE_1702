@@ -13,7 +13,7 @@
 <body>
 <%
     if (session.getAttribute("nick") == null) {
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("index1.jsp");
     }
 %>
 <h1>主页<%=session.getId()%>

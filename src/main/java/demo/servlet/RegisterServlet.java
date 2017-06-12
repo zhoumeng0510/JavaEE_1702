@@ -69,7 +69,7 @@ public class RegisterServlet extends HttpServlet {
 //                statement.setString(4, Arrays.toString(hobbies));
 //                statement.setString(5, Arrays.toString(cities));
                 statement.executeUpdate();
-                resp.sendRedirect("index.jsp");
+                resp.sendRedirect("index1.jsp");
             }
         } catch (SQLException e) {
             e.printStackTrace();
