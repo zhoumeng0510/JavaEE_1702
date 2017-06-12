@@ -23,17 +23,41 @@ public class UserAction extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        System.out.println(action);
 
-        if (action.equals("register")) {
+        /*
+        if (action == null) {
+            req.setAttribute("message","出现了一点问题。。。");
+            req.getRequestDispatcher("index.jsp").forward(req,resp);
+            return;
+        }
+
+        switch (action) {
+            case "register":
+                register(req,resp);
+                break;
+        case "login":
+                login(req,resp);
+                break;
+        case "logout":
+                logout(req,resp);
+        }
+        */
+
+        if ("register".equals(action)) {
             register(req, resp);
+            return;
         }
-        if (action.equals("login")) {
+        if ("login".equals(action)) {
             login(req, resp);
+            return;
         }
-        if (action.equals("logout")) {
+        if ("logout".equals(action)) {
             logout(req, resp);
+            return;
         }
+
+        req.setAttribute("message","出现了一点问题");
+        req.getRequestDispatcher("index.jsp").forward(req,resp);
     }
 
     private void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
