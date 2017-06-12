@@ -16,8 +16,7 @@
         response.sendRedirect("index1.jsp");
     }
 %>
-<h1>主页<%=session.getId()%>
-</h1>
+<h1>主页<%=session.getId()%></h1>
 <p><%=session.getAttribute("nick")%></p>
 <a href="second.jsp">第二页</a>
 <%
