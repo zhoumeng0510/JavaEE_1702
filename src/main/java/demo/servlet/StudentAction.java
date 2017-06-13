@@ -71,7 +71,7 @@ public class StudentAction extends HttpServlet {
                 preparedStatement = connection.prepareStatement(sql);
             } else {
                 req.setAttribute("message", "Error.");
-                req.getRequestDispatcher("default.jsp").forward(req, resp);
+                req.getRequestDispatcher("index.jsp").forward(req, resp);
                 return;
             }
             preparedStatement.setString(1, name);
@@ -114,7 +114,7 @@ public class StudentAction extends HttpServlet {
                 students.add(student);
             }
             req.getSession().setAttribute("students", students); // ?
-            resp.sendRedirect("default.jsp");
+            resp.sendRedirect("index.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
