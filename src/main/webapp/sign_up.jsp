@@ -12,14 +12,6 @@
 </head>
 <body>
 <h1>注册</h1>
-<pre>
-Ctrl + Shift + F10
-Ctrl + Shift + R
-
-Shift + Alt + F10
-Ctrl + Option + R
-
-</pre>
 <form action="user" method="post">
     <input type="hidden" name="action" value="register">
     <input type="text" name="nick" placeholder="昵称"><br>
