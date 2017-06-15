@@ -30,8 +30,7 @@
     <welcome-file-list>
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
-    <listener>
-        <listener-class>demo.util.TestListener</listener-class>
-    </listener>
-
+    <!--<listener>-->
+        <!--<listener-class>demo.util.TestListener</listener-class>-->
+    <!--</listener>-->
 </web-app>

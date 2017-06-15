@@ -117,6 +117,8 @@ public class UserAction extends HttpServlet {
                 resp.sendRedirect("student?action=queryAll"); // ***
             } else {
                 req.setAttribute("message", "手机号或密码错误");
+//                req.removeAttribute("message");
+                req.setAttribute("message","手机号或密码错误");
                 req.getRequestDispatcher("default.jsp").forward(req, resp);
             }
         } catch (SQLException e) {
