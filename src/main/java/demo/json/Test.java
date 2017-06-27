@@ -1,10 +1,11 @@
 package demo.json;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSON;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by zhoumeng on
@@ -13,20 +14,20 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-//        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 
         Weather weather = new Weather("33", "50", "12");
-        System.out.println(objectMapper.writeValueAsString(weather));
-
+        System.out.println(JSON.toJSONString(weather));
 
         List<Weather> weathers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             weathers.add(new Weather("tmp" + i, "hum" + i, "spd" + i));
         }
-        System.out.println(objectMapper.writeValueAsString(weathers));
+        System.out.println(JSON.toJSONString(weathers));
 
-        Weather newWeather = objectMapper.readValue("{\"tmp\":\"33\",\"hum\":\"50\",\"spd\":\"12\"}", Weather.class);
-        System.out.println(newWeather);
+        String jsonObjectString = "{\"hum\":\"50\",\"spd\":\"12\",\"tmp\":\"33\"}";
+        System.out.println(JSON.parseObject(jsonObjectString, Weather.class));
+
+        String jsonArrayString = "[{\"hum\":\"hum0\",\"spd\":\"spd0\",\"tmp\":\"tmp0\"},{\"hum\":\"hum1\",\"spd\":\"spd1\",\"tmp\":\"tmp1\"},{\"hum\":\"hum2\",\"spd\":\"spd2\",\"tmp\":\"tmp2\"}]";
+        System.out.println(JSON.parseArray(jsonArrayString, Weather.class));
     }
 }
